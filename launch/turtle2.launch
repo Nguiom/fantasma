@@ -1,0 +1,30 @@
+<launch>
+  <node
+    pkg="turtlesim" 
+    name="sim" 
+    type="turtlesim_node">
+    <rosparam file="$(find hello_turtle)/config/params.yaml" command="load" ns=""/>
+  </node>
+
+  <node 
+    pkg="hello_turtle" 
+    name="keyboard" 
+    type="keyboard.py"
+    output="screen" 
+    />
+
+   <node 
+    pkg="hello_turtle" 
+    name="move" 
+    type="move.py"
+    output="screen" 
+    />
+
+   <node 
+    pkg="hello_turtle" 
+    name="teleport" 
+    type="teleport.py"
+    output="screen" 
+    />
+
+</launch>
