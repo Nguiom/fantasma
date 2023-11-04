@@ -14,7 +14,7 @@ class Moving():
 		self.key=0
 		self.tabla={'1':self.interpret(150,150,150,150),'2':self.interpret(175,175,170,130),\
 			'3':self.interpret(115,185,120,180),'4':self.interpret(230,130,75,175),\
-				'5':self.interpret(230,115,755,135)}
+				'5':self.interpret(230,115,155,135)}
 	def jointCommand(self,command, id_num, addr_name, value, time):
 		rospy.wait_for_service('dynamixel_workbench/dynamixel_command')
 		try:        
