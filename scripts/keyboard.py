@@ -97,9 +97,6 @@ class ReadKey():
 			self.last_key=KBHit.getch()
 			rospy.loginfo(self.last_key)
 			self.key.publish(self.last_key)
-		else:
-			rospy.loginfo(self.last_key)
-			self.key.publish(self.last_key)
 
 if __name__== "__main__": 
 	try:

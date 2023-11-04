@@ -10,7 +10,7 @@ class Moving():
 	def __init__(self): 
 		rospy.init_node('Moving', anonymous=False)
 		self.key_sub = rospy.Subscriber('key',String, self.judge)
-		rate=rospy.Rate(10)
+		rate=rospy.Rate(0.5)
 		self.key=0
 		self.tabla={'1':self.interpret(150,150,150,150),'2':self.interpret(175,175,170,130),\
 			'3':self.interpret(115,185,120,180),'4':self.interpret(230,130,75,175),\
@@ -21,7 +21,6 @@ class Moving():
 			dynamixel_command = rospy.ServiceProxy(
             	'/dynamixel_workbench/dynamixel_command', DynamixelCommand)
 			result = dynamixel_command(command,id_num,addr_name,value)
-			rate.sleep(time)
 			return result.comm_result
 		except rospy.ServiceException as exc:
 				print(str(exc))
@@ -48,5 +47,6 @@ if __name__== "__main__":
 			temp.jointCommand('',2,'Goal_Position',temp.key[1], 0.5)
 			temp.jointCommand('',3,'Goal_Position',temp.key[2], 0.5)
 			temp.jointCommand('',4,'Goal_Position',temp.key[3], 0.5)
+			temp.rate.sleep()
 	except: 
 		rospy.loginfo("End of the trip for Turtlesim") 
