@@ -12,11 +12,10 @@ class Moving():
 		self.key_sub = rospy.Subscriber('key',String, self.judge)
 		rate=rospy.Rate(10)
 		self.key=0
-		self.name='a'
 		self.tabla={'1':self.interpret(150,150,150,150),'2':self.interpret(175,175,170,130),\
 			'3':self.interpret(115,185,120,180),'4':self.interpret(230,130,75,175),\
 				'5':self.interpret(230,115,755,135)}
-	def jointCommand(command, id_num, addr_name, value, time):
+	def jointCommand(self,command, id_num, addr_name, value, time):
 		rospy.wait_for_service('dynamixel_workbench/dynamixel_command')
 		try:        
 			dynamixel_command = rospy.ServiceProxy(
@@ -40,11 +39,14 @@ class Moving():
 if __name__== "__main__": 
 	try:
 		temp=Moving()
-		temp.jointCommand('', 1, 'Torque_Limit', temp.key[0], 0.5)
-		temp.jointCommand('', 2, 'Torque_Limit', temp.key[0], 0.5)
-		temp.jointCommand('', 3, 'Torque_Limit', temp.key[0], 0.5)
-		temp.jointCommand('', 4, 'Torque_Limit', temp.key[0], 0.5)
+		temp.jointCommand('', 1, 'Torque_Limit', 500, 0.5)
+		temp.jointCommand('', 2, 'Torque_Limit', 500, 0.5)
+		temp.jointCommand('', 3, 'Torque_Limit', 400, 0.5)
+		temp.jointCommand('', 4, 'Torque_Limit', 400, 0.5)
 		while not rospy.is_shutdown():
-			temp.jointCommand('',1,'Goal_Position',)
+			temp.jointCommand('',1,'Goal_Position',temp.key[0], 0.5)
+			temp.jointCommand('',2,'Goal_Position',temp.key[1], 0.5)
+			temp.jointCommand('',3,'Goal_Position',temp.key[2], 0.5)
+			temp.jointCommand('',4,'Goal_Position',temp.key[3], 0.5)
 	except: 
 		rospy.loginfo("End of the trip for Turtlesim") 
