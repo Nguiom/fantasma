@@ -13,9 +13,9 @@ class Moving():
 		rate=rospy.Rate(10)
 		self.key=0
 		self.name='a'
-		self.tabla={'1':self.interpret(180,180,180,180),'2':self.interpret(205,205,200,160),\
-			'3':self.interpret(145,215,150,210),'4':self.interpret(260,160,105,205),\
-				'5':self.interpret(260,145,105,165)}
+		self.tabla={'1':self.interpret(150,150,150,150),'2':self.interpret(175,175,170,130),\
+			'3':self.interpret(115,185,120,180),'4':self.interpret(230,130,75,175),\
+				'5':self.interpret(230,115,755,135)}
 	def jointCommand(command, id_num, addr_name, value, time):
 		rospy.wait_for_service('dynamixel_workbench/dynamixel_command')
 		try:        
