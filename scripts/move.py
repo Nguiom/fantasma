@@ -10,11 +10,11 @@ class Moving():
 	def __init__(self): 
 		rospy.init_node('Moving', anonymous=False)
 		self.key_sub = rospy.Subscriber('key',String, self.judge)
-		rate=rospy.Rate(0.5)
-		self.key=0
-		self.tabla={'1':self.interpret(150,150,150,150),'2':self.interpret(175,175,170,130),\
-			'3':self.interpret(115,185,120,180),'4':self.interpret(230,130,75,175),\
-				'5':self.interpret(230,115,155,135)}
+		self.rate=rospy.Rate(0.5)
+		self.key=[500,500,500,500]
+		self.tabla={'q':self.interpret(150,150,150,150),'w':self.interpret(175,175,170,130),\
+			'e':self.interpret(115,185,120,180),'r':self.interpret(235,130,205,175),\
+				't':self.interpret(230,115,205,115)}
 	def jointCommand(self,command, id_num, addr_name, value, time):
 		rospy.wait_for_service('dynamixel_workbench/dynamixel_command')
 		try:        
@@ -25,7 +25,7 @@ class Moving():
 		except rospy.ServiceException as exc:
 				print(str(exc))
 	def judge(self,data):
-		self.key=self.tabla.get(data.data,(0,0,0,0))
+		self.key=self.tabla.get(data.data,self.key)
 
 		rospy.loginfo(temp)
 	def interpret(self,a,b,c,d):
