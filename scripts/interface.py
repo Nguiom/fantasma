@@ -131,4 +131,4 @@ class interface:
 if __name__== "__main__": 
         root = Tk()
         interface(root)
-        root.mainloop()
+        interface.mainloop()
