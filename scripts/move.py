@@ -82,14 +82,6 @@ class Moving():
 		q4=np.empty((1,21))
 		for i in range(21):
 			q1[0,i],q2[0,i],q3[0,i],q4[0,i]=self.equation(x[0,i],y[0,i],z[0,i])
-			if(q1[0,i]<0.01):
-				q1[0,1]=0
-			if(q2[0,i]<0.01):
-				q2[0,i]=0
-			if(q3[0,i]<0.01):
-				q3[0,i]=0
-			if(q4[0,i]<0.01):
-				q4[0,i]=0
 			#move goal
 		q1=q1.flat
 		q2=q2.flat
