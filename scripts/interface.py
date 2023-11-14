@@ -12,6 +12,11 @@ from dynamixel_workbench_msgs.srv import DynamixelCommand
 class interface:
     def __init__(self,root):
 
+        rospy.init_node('State', anonymous=False)
+        self.key_sub= rospy.Subscriber("/dynamixel_workbench/joint_states",JointState, self.read)
+        self.move =rospy.Publisher('move',Int32MultiArray, queue_size=10)
+        rate=rospy.Rate(0.5)
+
         self.state=0
         root.title("Lineal")
         self.goals={}
@@ -66,10 +71,7 @@ class interface:
         for child in mainframe.winfo_children(): 
             child.grid_configure(padx=5, pady=5)
 
-        rospy.init_node('State', anonymous=False)
-        self.key_sub= rospy.Subscriber("/dynamixel_workbench/joint_states",JointState, self.read)
-        self.move =rospy.Publisher('move',Int32MultiArray, queue_size=10)
-        rate=rospy.Rate(0.5)
+        
 
     def offset(self, *args):
         try:
