@@ -24,22 +24,4 @@
     </rosparam>
     <remap from="/dynamixel_workbench/joint_trajectory" to="joint_trajectory"/>
   </node>
-  <node 
-    pkg="fantasma" 
-    name="keyboard" 
-    type="keyboard.py"
-    output="screen" 
-    />
-  <node 
-    pkg="fantasma" 
-    name="move" 
-    type="move.py"
-    output="screen" 
-    />
-  <node 
-    pkg="fantasma" 
-    name="state" 
-    type="state.py"
-    output="screen" 
-    />
 </launch>
