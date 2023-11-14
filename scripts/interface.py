@@ -121,7 +121,9 @@ class interface:
         temp2=self.p2.get()
         temp1=self.goals.get(temp1,[100,1,136])
         temp2=self.goals.get(temp2,[100,1,136])
-        self.move.publish(temp1+temp2)
+        message=Int32MultiArray
+        message.data=temp1+temp2
+        self.move.publish(message)
     
     def read(self,data):
         pass
