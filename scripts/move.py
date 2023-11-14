@@ -36,6 +36,7 @@ class Moving():
 			self.goal[1]=int(np.interp(q2[i]*(180/np.pi)+150,[0,300],[0,1022]))
 			self.goal[2]=int(np.interp(q3[i]*(180/np.pi)+150,[0,300],[0,1022]))
 			self.goal[3]=int(np.interp(q4[i]*(180/np.pi)+150,[0,300],[0,1022]))
+			rospy.loginfo([self.goal[0],self.goal[1],self.goal[2],self.goal[3]])
 			self.jointCommand('',1,'Goal_Position',self.goal[0], 0.5)
 			self.jointCommand('',2,'Goal_Position',self.goal[1], 0.5)
 			self.jointCommand('',3,'Goal_Position',self.goal[2], 0.5)
