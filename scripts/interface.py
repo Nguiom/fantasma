@@ -100,7 +100,7 @@ class interface:
             print(str(exc))
 
     def newGoal(self,*args):
-        self.goals.update({self.name.get():[int(self.xG.get()),\
+        self.goals.update({self.name.get():[int(float(self.xG.get())),\
         int(self.yG.get()),self.z]})
         self.nameList.append(self.name.get())
 
