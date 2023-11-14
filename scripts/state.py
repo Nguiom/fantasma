@@ -14,7 +14,7 @@ class State():
 			rospy.spin()
 
 	def read(self,data):
-		rospy.loginfo(data.position)
+		rospy.loginfo(data.position[0])
 
 if __name__== "__main__": 
     try:
