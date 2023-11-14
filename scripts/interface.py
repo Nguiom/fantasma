@@ -4,17 +4,12 @@ import rospy
 from std_msgs.msg import String
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Int32MultiArray
-import tkinter as tk
+from tkinter import *
 from tkinter import ttk
 import numpy as np
 
 class interface:
     def __init__(self,root):
-
-        rospy.init_node('State', anonymous=False)
-        self.key_sub= rospy.Subscriber("/dynamixel_workbench/joint_states",JointState, self.read)
-        self.move =rospy.Publisher('move',Int32MultiArray, queue_size=10)
-        rate=rospy.Rate(0.5)
 
         self.state=0
         root.title("Lineal")
@@ -66,8 +61,10 @@ class interface:
         for child in mainframe.winfo_children(): 
             child.grid_configure(padx=5, pady=5)
 
-        feet_entry.focus()
-        root.bind("<Return>", self.calculate)
+        rospy.init_node('State', anonymous=False)
+        self.key_sub= rospy.Subscriber("/dynamixel_workbench/joint_states",JointState, self.read)
+        self.move =rospy.Publisher('move',Int32MultiArray, queue_size=10)
+        rate=rospy.Rate(0.5)
 
     def offset(self, *args):
         try:
