@@ -117,12 +117,12 @@ class interface:
     def go(self):
         temp1=self.p1.get()
         temp2=self.p2.get()
-        temp1=self.goals[temp1]
-        temp2=self.goals[temp2]
+        temp1=self.goals.get(temp1,[100,1,136])
+        temp2=self.goals.get(temp2,[100,1,136])
         self.move.publish(temp1+temp2)
     
     def read(self,data):
-        self.xC.set(data.position[0])
+        pass
 
 if __name__== "__main__": 
         root = Tk()
