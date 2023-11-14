@@ -9,8 +9,12 @@ class Moving():
 	def __init__(self): 
 		rospy.init_node('Moving', anonymous=False)
 		self.goal_serve = rospy.Subscriber('move',Int32MultiArray, self.judge)
-		self.rate=rospy.Rate(1)
 		self.goal=[500,500,500,500]
+		self.jointCommand('',1,'Goal_Position',self.goal[0], 0.5)
+		self.jointCommand('',2,'Goal_Position',self.goal[1], 0.5)
+		self.jointCommand('',3,'Goal_Position',self.goal[2], 0.5)
+		self.jointCommand('',4,'Goal_Position',self.goal[3], 0.5)
+		rospy.spin()
 
 	def jointCommand(self,command, id_num, addr_name, value, time):
 		rospy.wait_for_service('dynamixel_workbench/dynamixel_command')
