@@ -124,7 +124,7 @@ class interface:
             print("Service call failed: %s"%e)
     
     def read(self,data):
-        pass
+        self.xC.set(data.position[0])
 
 if __name__== "__main__": 
         root = Tk()
