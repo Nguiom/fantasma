@@ -49,7 +49,7 @@ class Moving():
 			self.rate.sleep()
 		
 
-	def equation(x,y,z):
+	def equation(self,x,y,z):
 		q1=np.arctan2(y,x)
 		a=np.sqrt(x**2+y**2)
 		alp=np.arctan2(z-136,a)
@@ -69,7 +69,7 @@ class Moving():
 		q4=np.arctan2(rots,rotc)
 		return (q1,q2,q3,q4)
 
-	def linea(p1,p2):
+	def linea(self,p1,p2):
 		x=np.zeros([1,21])
 		y=np.zeros([1,21])
 		z=np.zeros([1,21])
@@ -80,7 +80,7 @@ class Moving():
 			z[0,i]=p1[2]+((i*vn)/20)*((p2[2]-p1[2])/vn)
 		return x,y,z
 
-	def makeLinea(p1,p2):
+	def makeLinea(self,p1,p2):
 		x,y,z=linea(p1,p2)
 		q1=np.empty((1,21))
 		q2=np.empty((1,21))
