@@ -40,7 +40,6 @@ class Moving():
 			self.jointCommand('',2,'Goal_Position',self.goal[1], 0.5)
 			self.jointCommand('',3,'Goal_Position',self.goal[2], 0.5)
 			self.jointCommand('',4,'Goal_Position',self.goal[3], 0.5)
-			self.rate.sleep()
 		
 
 	def equation(self,x,y,z):
