@@ -4,7 +4,7 @@ import rospy
 from std_msgs.msg import String
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Int32MultiArray
-from tkinter import *
+import tkinter as tk
 from tkinter import ttk
 import numpy as np
 
