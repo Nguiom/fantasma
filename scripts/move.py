@@ -81,13 +81,13 @@ class Moving():
 		return x,y,z
 
 	def makeLinea(self,p1,p2):
-		x,y,z=linea(p1,p2)
+		x,y,z=self.linea(p1,p2)
 		q1=np.empty((1,21))
 		q2=np.empty((1,21))
 		q3=np.empty((1,21))
 		q4=np.empty((1,21))
 		for i in range(21):
-			q1[0,i],q2[0,i],q3[0,i],q4[0,i]=equation(x[0,i],y[0,i],z[0,i])
+			q1[0,i],q2[0,i],q3[0,i],q4[0,i]=self.equation(x[0,i],y[0,i],z[0,i])
 			if(q1[0,i]<0.01):
 				q1[0,1]=0
 			if(q2[0,i]<0.01):
