@@ -9,9 +9,9 @@ from tkinter import ttk
 import numpy as np
 from dynamixel_workbench_msgs.srv import DynamixelCommand
 
-class interface:
+class interface(TK):
     def __init__(self,root):
-
+        super().__init__()
         rospy.init_node('State', anonymous=False)
         self.key_sub= rospy.Subscriber("/dynamixel_workbench/joint_states",JointState, self.read)
         self.move =rospy.Publisher('move',Int32MultiArray, queue_size=10)
@@ -129,6 +129,5 @@ class interface:
         pass
 
 if __name__== "__main__": 
-        root = Tk()
-        interface(root)
-        interface.mainloop()
+        final=interface()
+        final.mainloop()
