@@ -22,7 +22,8 @@ class Moving():
 		except rospy.ServiceException as exc:
 				print(str(exc))
 
-	def judge(self,data):
+	def judge(self,msg):
+		data=msg.data
 		pos1=np.array([data[0],data[1],data[2]])
 		pos2=np.array([data[3],data[4],data[5]])
 		q1,q2,q3,q4=self.makeLinea(pos1,pos2)
