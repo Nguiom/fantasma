@@ -104,4 +104,3 @@ if __name__== "__main__":
 		ReadKey(keys)  
 	except: 
 		rospy.loginfo("End of the trip for Turtlesim") 
-

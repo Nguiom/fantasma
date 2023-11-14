@@ -7,6 +7,7 @@ from std_msgs.msg import Int32MultiArray
 from tkinter import *
 from tkinter import ttk
 import numpy as np
+from dynamixel_workbench_msgs.srv import DynamixelCommand
 
 class interface:
     def __init__(self,root):
