@@ -23,6 +23,7 @@ class interface:
         
         self.z=0
         self.zOff = StringVar()
+        self.zOff.set(136)
         feet_entry = ttk.Entry(mainframe, width=7, textvariable=self.zOff)
         feet_entry.grid(column=3, row=1, sticky=(W, E))
         ttk.Label(mainframe, text="Offset").grid(column=1, row=1, sticky=(W, E))
@@ -39,8 +40,11 @@ class interface:
         ttk.Button(mainframe, text="On/off", command=self.on()).grid(column=5, row=2, sticky=W)
 
         self.xG=StringVar()
+        self.xG.set(100)
         self.yG=StringVar()
+        self.yG.set(100)
         self.name=StringVar()
+        self.name.set("p1")
         self.nameList=[]
         ttk.Label(mainframe, text="Goal").grid(column=1, row=3, sticky=(W, E))
         xG_entry = ttk.Entry(mainframe, width=7, textvariable=self.xG)
