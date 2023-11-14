@@ -32,7 +32,6 @@ class Moving():
 		pos2=np.array([data[3],data[4],data[5]])
 		q1,q2,q3,q4=self.makeLinea(pos1,pos2)
 		for i in range(21):
-			print(goal)
 			self.goal[0]=int(np.interp(q1[i]*(180/np.pi)+150,[0,300],[0,1022]))
 			self.goal[1]=int(np.interp(q2[i]*(180/np.pi)+150,[0,300],[0,1022]))
 			self.goal[2]=int(np.interp(q3[i]*(180/np.pi)+150,[0,300],[0,1022]))
