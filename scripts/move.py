@@ -8,7 +8,7 @@ import numpy as np
 class Moving(): 
 	def __init__(self): 
 		rospy.init_node('Moving', anonymous=False)
-		self.goal_serve = rospy.Service('move',Int32MultiArray, self.judge)
+		self.goal_serve = rospy.Subscriber('move',Int32MultiArray, self.judge)
 		self.rate=rospy.Rate(1)
 		self.goal=[500,500,500,500]
 

@@ -13,6 +13,7 @@ class interface:
 
         rospy.init_node('State', anonymous=False)
         self.key_sub= rospy.Subscriber("/dynamixel_workbench/joint_states",JointState, self.read)
+        self.move =rospy.Publisher('move',Int32MultiArray, queue_size=10)
         rate=rospy.Rate(0.5)
 
         self.state=0
@@ -116,12 +117,7 @@ class interface:
         temp2=self.p2.get()
         temp1=self.goals[temp1]
         temp2=self.goals[temp2]
-        rospy.wait_for_service('move')
-        try:
-            moving=rospy.ServiceProxy('move',Int32MultiArray)
-            resp1=moving(temp1+temp2)
-        except rospy.ServiceException as e:
-            print("Service call failed: %s"%e)
+        self.move.publish(temp1+temp2)
     
     def read(self,data):
         self.xC.set(data.position[0])
