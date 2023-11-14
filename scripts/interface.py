@@ -9,9 +9,9 @@ from tkinter import ttk
 import numpy as np
 from dynamixel_workbench_msgs.srv import DynamixelCommand
 
-class interface(TK):
+class interface():
     def __init__(self,root):
-        super().__init__()
+
         rospy.init_node('State', anonymous=False)
         self.key_sub= rospy.Subscriber("/dynamixel_workbench/joint_states",JointState, self.read)
         self.move =rospy.Publisher('move',Int32MultiArray, queue_size=10)
@@ -32,8 +32,8 @@ class interface(TK):
         feet_entry = ttk.Entry(mainframe, width=7, textvariable=self.zOff)
         feet_entry.grid(column=3, row=1, sticky=(W, E))
         ttk.Label(mainframe, text="Offset").grid(column=1, row=1, sticky=(W, E))
-        ttk.Button(mainframe, text="Save", command=self.offset()).grid(column=5, row=1, sticky=W)
-        ttk.Button(mainframe, text="Grab", command=self.grab()).grid(column=4, row=1, sticky=W)
+        ttk.Button(mainframe, text="Save", command=self.offset).grid(column=5, row=1, sticky=W)
+        ttk.Button(mainframe, text="Grab", command=self.grab).grid(column=4, row=1, sticky=W)
 
         self.xC=StringVar()
         self.yC=StringVar()
@@ -42,7 +42,7 @@ class interface(TK):
         ttk.Label(mainframe, textvariable=self.xC).grid(column=2, row=2, sticky=(W, E))
         ttk.Label(mainframe, textvariable=self.yC).grid(column=3, row=2, sticky=(W, E))
         ttk.Label(mainframe, textvariable=self.zC).grid(column=4, row=2, sticky=(W, E))
-        ttk.Button(mainframe, text="On/off", command=self.on()).grid(column=5, row=2, sticky=W)
+        ttk.Button(mainframe, text="On/off", command=self.on).grid(column=5, row=2, sticky=W)
 
         self.xG=StringVar()
         self.xG.set(100)
@@ -58,7 +58,7 @@ class interface(TK):
         yG_entry.grid(column=3, row=3, sticky=(W, E))
         name_entry = ttk.Entry(mainframe, width=7, textvariable=self.name)
         name_entry.grid(column=4, row=3, sticky=(W, E))
-        ttk.Button(mainframe, text="Save", command=self.newGoal()).grid(column=5, row=3, sticky=W)
+        ttk.Button(mainframe, text="Save", command=self.newGoal).grid(column=5, row=3, sticky=W)
 
         self.p1=StringVar()
         self.p2=StringVar()
@@ -66,14 +66,14 @@ class interface(TK):
         self.p1_entry.grid(column=1, row=4, sticky=(W, E))
         self.p2_entry=ttk.Combobox(mainframe, textvariable=self.p2,postcommand=self.updateP2)
         self.p2_entry.grid(column=3, row=4, sticky=(W, E))
-        ttk.Button(mainframe, text="Go", command=self.go()).grid(column=5, row=5, sticky=W)
+        ttk.Button(mainframe, text="Go", command=self.go).grid(column=5, row=5, sticky=W)
 
         for child in mainframe.winfo_children(): 
             child.grid_configure(padx=5, pady=5)
 
         
 
-    def offset(self, *args):
+    def offset(self):
         try:
             self.z = int(self.zOff.get())
         except ValueError:
@@ -129,5 +129,6 @@ class interface(TK):
         pass
 
 if __name__== "__main__": 
-        final=interface()
-        final.mainloop()
+        root = Tk()
+        test=interface(root)
+        root.mainloop()
