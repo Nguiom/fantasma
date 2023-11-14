@@ -30,6 +30,7 @@ class Moving():
 		data=msg.data
 		pos1=np.array([data[0],data[1],data[2]])
 		pos2=np.array([data[3],data[4],data[5]])
+		print(pos1)
 		q1,q2,q3,q4=self.makeLinea(pos1,pos2)
 		q1=q1.flat
 		q2=q2.flat
