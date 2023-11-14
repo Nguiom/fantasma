@@ -26,9 +26,13 @@ class Moving():
 		pos1=np.array([data[0],data[1],data[2]])
 		pos2=np.array([data[3],data[4],data[5]])
 		q1,q2,q3,q4=self.makeLinea(pos1,pos2)
+		q1=q1.flat
+		q2=q2.flat
+		q3=q3.flat
+		q4=q4.flat
 		for i in range(21):
 			print(goal)
-			self.goal[0]=int(np.interp(q1[i]*(180/np.pi)+150[0,300],[0,1022]))
+			self.goal[0]=int(np.interp(q1[i]*(180/np.pi)+150,[0,300],[0,1022]))
 			self.goal[1]=int(np.interp(q2[i]*(180/np.pi)+150,[0,300],[0,1022]))
 			self.goal[2]=int(np.interp(q3[i]*(180/np.pi)+150,[0,300],[0,1022]))
 			self.goal[3]=int(np.interp(q4[i]*(180/np.pi)+150,[0,300],[0,1022]))
@@ -78,7 +82,6 @@ class Moving():
 		q4=np.empty((1,21))
 		for i in range(21):
 			q1[0,i],q2[0,i],q3[0,i],q4[0,i]=equation(x[0,i],y[0,i],z[0,i])
-			print(z[0,i])
 			if(q1[0,i]<0.01):
 				q1[0,1]=0
 			if(q2[0,i]<0.01):
@@ -88,6 +91,10 @@ class Moving():
 			if(q4[0,i]<0.01):
 				q4[0,i]=0
 			#move goal
+		q1=q1.flat
+		q2=q2.flat
+		q3=q3.flat
+		q4=q4.flat
 		return q1,q2,q3,q4
 
 if __name__== "__main__": 
