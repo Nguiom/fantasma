@@ -64,7 +64,7 @@ class interface:
         self.p2=StringVar()
         self.p1_entry=ttk.Combobox(mainframe, textvariable=self.p1,postcommand=self.updateP1)
         self.p1_entry.grid(column=1, row=4, sticky=(W, E))
-        self.p2_entry=ttk.Combobox(mainframe, textvariable=self.p1,postcommand=self.updateP2)
+        self.p2_entry=ttk.Combobox(mainframe, textvariable=self.p2,postcommand=self.updateP2)
         self.p2_entry.grid(column=3, row=4, sticky=(W, E))
         ttk.Button(mainframe, text="Go", command=self.go()).grid(column=5, row=5, sticky=W)
 
